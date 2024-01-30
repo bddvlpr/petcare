@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: petcare
+      POSTGRES_PASSWORD: petcare
+      POSTGRES_DB: petcare
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
