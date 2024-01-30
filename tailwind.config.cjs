@@ -4,16 +4,16 @@ const forms = require('@tailwindcss/forms');
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts}'],
 
-	theme: {
-		extend: {}
-	},
+  theme: {
+    extend: {}
+  },
 
-	plugins: [forms, typography, daisyui],
-	daisyui: {
-		logs: false
-	}
+  plugins: [forms, typography, daisyui],
+  daisyui: {
+    logs: false
+  }
 };
 
 module.exports = config;
