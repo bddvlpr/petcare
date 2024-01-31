@@ -9,8 +9,59 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Pet {
   id Int @id @default(autoincrement())
+
+  name String
+  type PetType
+
+  picture  String?
+  birthday DateTime?
+  notes    String?
+
+  routines Routine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum PetType {
+  CAT
+  DOG
+  PARROT
+}
+
+model Medication {
+  id Int @id @default(autoincrement())
+
+  name    String
+  picture String?
+  notes   String?
+
+  routines Routine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Routine {
+  id Int @id @default(autoincrement())
+
+  pet   Pet @relation(fields: [petId], references: [id])
+  petId Int
+
+  medication   Medication @relation(fields: [medicationId], references: [id])
+  medicationId Int
+
+  amount     Int
+  every      Int
+  lastIntake DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
