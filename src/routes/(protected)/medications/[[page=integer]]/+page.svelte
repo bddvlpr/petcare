@@ -14,18 +14,15 @@
         <tr>
           <th></th>
           <th>Name</th>
-          <th>Job</th>
-          <th>Favorite Color</th>
+          <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         {#each data.medications as medication}
-          {medication.name}
           <tr>
             <th>{medication.id}</th>
             <td>{medication.name}</td>
-            <td>{medication}</td>
-            <td>Red</td>
+            <td>{medication.notes ?? 'None'}</td>
           </tr>
         {/each}
       </tbody>
@@ -39,7 +36,7 @@
         class="btn"
         class:join-item={pages > 1}
         class:btn-primary={pagination === (Number($page.params.page) || 1)}
-        href="/pets/{pagination}"
+        href="/medications/{pagination}"
       >
         {pagination}
       </a>

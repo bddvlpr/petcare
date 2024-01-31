@@ -58,8 +58,8 @@ model Routine {
   medication   Medication @relation(fields: [medicationId], references: [id])
   medicationId Int
 
-  amount     Int
-  every      Int
+  amount     String
+  interval   Int
   lastIntake DateTime?
 
   createdAt DateTime @default(now())

@@ -51,24 +51,34 @@ async function main() {
   console.log('Pets processed', Object.keys(pets).length);
 
   const medication = {
-    noroclav: await prisma.medication.upsert({
+    meloxicam: await prisma.medication.upsert({
       where: { id: 1 },
       create: {
         id: 1,
-        name: 'Noroclav'
-      },
-      update: {}
-    }),
-    flysine: await prisma.medication.upsert({
-      where: { id: 2 },
-      create: {
-        id: 2,
-        name: 'F-Lysine'
+        name: 'Meloxicam',
+        notes: 'Pijnstiller artrose'
       },
       update: {}
     })
   };
   console.log('Medication processed', Object.keys(medication).length);
+
+  const routines = [
+    await prisma.routine.upsert({
+      where: {
+        id: 1
+      },
+      create: {
+        id: 1,
+        petId: pets.sylke.id,
+        medicationId: medication.meloxicam.id,
+        amount: 'bij eten',
+        interval: 60 * 60 * 24
+      },
+      update: {}
+    })
+  ];
+  console.log('Routines processed', routines.length);
 }
 
 main()

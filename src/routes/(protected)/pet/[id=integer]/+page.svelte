@@ -4,4 +4,4 @@
   export let data: PageData;
 </script>
 
-{data.pet.name}
+<img src={data.pet.picture} />

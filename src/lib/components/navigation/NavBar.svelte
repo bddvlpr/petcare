@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { signIn, signOut } from '@auth/sveltekit/client';
-  import { PawPrint, Pill } from 'lucide-svelte';
+  import Icon from '@iconify/svelte';
   import NavBarIcon from './NavBarIcon.svelte';
 
   $: session = $page.data.session;
@@ -11,18 +11,23 @@
   <div class="navbar rounded-xl bg-base-200 p-3 shadow-xl">
     <div class="flex-1">
       <a class="btn btn-ghost text-xl" href="/">
-        <Pill />
+        <Icon class="h-6 w-6" icon="ph:paw-print" />
         Petcare
       </a>
     </div>
     <div class="flex-none gap-2">
       {#if session}
-        <NavBarIcon href="/pets" tooltip="Pets">
-          <PawPrint />
-        </NavBarIcon>
-        <NavBarIcon href="/medications" tooltip="Medications">
-          <Pill />
-        </NavBarIcon>
+        <div class="hidden sm:block">
+          <NavBarIcon href="/pets" tooltip="Pets">
+            <Icon class="h-6 w-6" icon="ph:paw-print-fill" />
+          </NavBarIcon>
+          <NavBarIcon href="/routines" tooltip="Routines">
+            <Icon class="h-6 w-6" icon="ph:repeat-fill" />
+          </NavBarIcon>
+          <NavBarIcon href="/medications" tooltip="Medications">
+            <Icon class="h-6 w-6" icon="ph:pill-fill" />
+          </NavBarIcon>
+        </div>
         <div class="dropdown dropdown-end">
           <button class="avatar btn btn-circle btn-ghost" tabindex="0">
             <div class="w-10 rounded-full">
@@ -30,7 +35,30 @@
             </div>
           </button>
           <ul class="menu dropdown-content z-50 w-48 rounded-box bg-base-100 p-2 shadow">
-            <li><button on:click={() => signOut()}>Log out</button></li>
+            <li class="sm:hidden">
+              <a href="/pets">
+                <Icon class="h-4 w-4" icon="ph:pill-fill" />
+                Pets
+              </a>
+            </li>
+            <li class="sm:hidden">
+              <a href="/routines">
+                <Icon class="h-4 w-4" icon="ph:repeat-fill" />
+                Routines
+              </a>
+            </li>
+            <li class="sm:hidden">
+              <a href="/medications">
+                <Icon class="h-4 w-4" icon="ph:pill-fill" />
+                Medications
+              </a>
+            </li>
+            <li>
+              <button on:click={() => signOut()}>
+                <Icon class="h-4 w-4" icon="ph:door-fill" />
+                Log out
+              </button>
+            </li>
           </ul>
         </div>
       {:else}
