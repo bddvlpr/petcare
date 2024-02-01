@@ -1,1 +1,2 @@
-export const toLocalDateString = (date: Date | undefined) => date?.toLocaleDateString() ?? '?';
+export const toLocalDateString = (date: Date | undefined | null) =>
+  date?.toLocaleDateString() ?? '?';

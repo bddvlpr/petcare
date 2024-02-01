@@ -58,9 +58,23 @@ model Routine {
   medication   Medication @relation(fields: [medicationId], references: [id])
   medicationId Int
 
-  amount     String
-  interval   Int
-  lastIntake DateTime?
+  amount   String
+  interval Int
+  time     Int
+  logs     RoutineLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RoutineLog {
+  id Int @id @default(autoincrement())
+
+  routine   Routine @relation(fields: [routineId], references: [id])
+  routineId Int
+
+  taken     Boolean
+  timestamp DateTime
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

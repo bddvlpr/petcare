@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import PetCard from '$lib/components/content/PetCard.svelte';
+  import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -26,4 +27,10 @@
       </a>
     {/each}
   </div>
+</div>
+
+<div class="fixed bottom-10 right-8">
+  <a class="btn btn-circle btn-primary" href="/pets/add">
+    <Icon class="h-6 w-6" icon="ph:plus" />
+  </a>
 </div>

@@ -62,23 +62,6 @@ async function main() {
     })
   };
   console.log('Medication processed', Object.keys(medication).length);
-
-  const routines = [
-    await prisma.routine.upsert({
-      where: {
-        id: 1
-      },
-      create: {
-        id: 1,
-        petId: pets.sylke.id,
-        medicationId: medication.meloxicam.id,
-        amount: 'bij eten',
-        interval: 60 * 60 * 24
-      },
-      update: {}
-    })
-  ];
-  console.log('Routines processed', routines.length);
 }
 
 main()

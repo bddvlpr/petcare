@@ -1,6 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
+  import Avatar from '$lib/components/content/Avatar.svelte';
 
   export let data: PageData;
 
@@ -13,16 +15,26 @@
       <thead>
         <tr>
           <th></th>
+          <th>Picture</th>
           <th>Name</th>
-          <th>Notes</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         {#each data.medications as medication}
           <tr>
             <th>{medication.id}</th>
+            <td>
+              <div class="flex items-center gap-3">
+                <Avatar alt={medication.name} src={medication.picture} size="w-12" />
+              </div>
+            </td>
             <td>{medication.name}</td>
-            <td>{medication.notes ?? 'None'}</td>
+            <td>
+              <a class="btn btn-circle btn-ghost" href="/medication/{medication.id}">
+                <Icon class="h-6 w-6" icon="ph:eye" />
+              </a>
+            </td>
           </tr>
         {/each}
       </tbody>
@@ -42,4 +54,10 @@
       </a>
     {/each}
   </div>
+</div>
+
+<div class="fixed bottom-10 right-8">
+  <a class="btn btn-circle btn-primary" href="/medications/add">
+    <Icon class="h-6 w-6" icon="ph:plus" />
+  </a>
 </div>

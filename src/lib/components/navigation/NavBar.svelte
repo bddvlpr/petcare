@@ -10,14 +10,14 @@
 <div class="m-2 pb-2">
   <div class="navbar rounded-xl bg-base-200 p-3 shadow-xl">
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl" href="/">
+      <a class="btn btn-ghost md:text-xl" href="/">
         <Icon class="h-6 w-6" icon="ph:paw-print" />
         Petcare
       </a>
     </div>
     <div class="flex-none gap-2">
       {#if session}
-        <div class="hidden sm:block">
+        <div>
           <NavBarIcon href="/pets" tooltip="Pets">
             <Icon class="h-6 w-6" icon="ph:paw-print-fill" />
           </NavBarIcon>
@@ -35,24 +35,6 @@
             </div>
           </button>
           <ul class="menu dropdown-content z-50 w-48 rounded-box bg-base-100 p-2 shadow">
-            <li class="sm:hidden">
-              <a href="/pets">
-                <Icon class="h-4 w-4" icon="ph:pill-fill" />
-                Pets
-              </a>
-            </li>
-            <li class="sm:hidden">
-              <a href="/routines">
-                <Icon class="h-4 w-4" icon="ph:repeat-fill" />
-                Routines
-              </a>
-            </li>
-            <li class="sm:hidden">
-              <a href="/medications">
-                <Icon class="h-4 w-4" icon="ph:pill-fill" />
-                Medications
-              </a>
-            </li>
             <li>
               <button on:click={() => signOut()}>
                 <Icon class="h-4 w-4" icon="ph:door-fill" />
