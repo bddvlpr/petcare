@@ -55,7 +55,7 @@ model Routine {
   pet   Pet @relation(fields: [petId], references: [id])
   petId Int
 
-  medication   Medication @relation(fields: [medicationId], references: [id])
+  medication   Medication @relation(fields: [medicationId], references: [id], onDelete: Cascade)
   medicationId Int
 
   amount   String

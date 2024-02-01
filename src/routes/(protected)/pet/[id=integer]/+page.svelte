@@ -8,7 +8,7 @@
 
 <div>
   <div class="flex items-center">
-    <div>
+    <div class="mr-auto">
       <h1 class="text-4xl font-bold text-primary">
         {data.pet.name}
       </h1>
@@ -16,15 +16,22 @@
         {data.pet.type}
       </div>
     </div>
-
-    <a class="btn btn-circle mx-2 ml-auto" href="/pet/{data.pet.id}/edit">
-      <Icon class="h-6 w-6" icon="ph:note-pencil" />
-    </a>
-    <a class="btn btn-circle btn-error mr-4" href="/pet/{data.pet.id}/archive">
-      <Icon class="h-6 w-6" icon="ph:archive" />
-    </a>
     <Avatar alt={data.pet.name} src={data.pet.picture} size="w-24" type="rounded" />
   </div>
   <div class="divider"></div>
-  <h2 class="text-2xl font-semibold">Routines</h2>
+
+  <h2 class="my-2 text-2xl font-semibold">Notes</h2>
+  <p>
+    {data.pet.notes ?? 'None'}
+  </p>
+  <h2 class="my-2 text-2xl font-semibold">Routines</h2>
+</div>
+
+<div class="fixed bottom-10 right-8">
+  <a class="btn btn-circle" href="/pet/{data.pet.id}/edit">
+    <Icon class="h-6 w-6" icon="ph:note-pencil" />
+  </a>
+  <a class="btn btn-circle btn-error" href="/pet/{data.pet.id}/archive">
+    <Icon class="h-6 w-6" icon="ph:archive" />
+  </a>
 </div>

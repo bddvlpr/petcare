@@ -10,7 +10,7 @@
 </script>
 
 <div class="m-2 flex flex-wrap justify-center gap-4">
-  <div class="overflow-x-auto">
+  <div class="w-full overflow-x-auto">
     <table class="table">
       <thead>
         <tr>
