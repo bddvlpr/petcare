@@ -1,7 +1,7 @@
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod';
-import { fail, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { addMedication } from '$lib/services/medications';
 
 const schema = z.object({
@@ -20,7 +20,7 @@ export const actions = {
   default: async ({ request }) => {
     const form = await superValidate(request, schema);
 
-    if (!form.valid) return fail(400, { form });
+    if (!form.valid) return message(form, { type: 'error', text: 'Form is not valid!' });
 
     await addMedication(form.data);
 
