@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "title": "Petcare",
+    "icons": {
+      "pets": "Pets",
+      "routines": "Routines",
+      "medications": "Medications"
+    },
+    "actions": {
+      "language": "Language",
+      "login": "Log in",
+      "logout": "Log out"
+    }
+  }
+}
