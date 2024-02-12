@@ -2,11 +2,23 @@ import i18n from 'sveltekit-i18n';
 import { dev } from '$app/environment';
 import lang from './lang.json';
 
-export const { t, locale, locales, loading, loadTranslations, translations, setLocale } = new i18n({
+export const defaultLocale = 'en';
+
+export const {
+  t,
+  locale,
+  locales,
+  loading,
+  addTranslations,
+  loadTranslations,
+  translations,
+  setLocale,
+  setRoute
+} = new i18n({
   log: {
     level: dev ? 'warn' : 'error'
   },
-  fallbackLocale: 'en',
+  fallbackLocale: defaultLocale,
   translations: {
     en: { lang },
     nl: { lang }

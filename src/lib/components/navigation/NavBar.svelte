@@ -3,10 +3,10 @@
   import { signIn, signOut } from '@auth/sveltekit/client';
   import Icon from '@iconify/svelte';
   import NavBarIcon from './NavBarIcon.svelte';
-  import { locales, setLocale, t } from '$lib/i18n';
-  import lang from '$lib/i18n/lang.json';
+  import { locale, locales, t } from '$lib/i18n';
 
   $: session = $page.data.session;
+  $: ({ route } = $page.data.i18n);
 </script>
 
 <div class="m-2 pb-2">
@@ -20,13 +20,13 @@
     <div class="flex-none gap-2">
       {#if session}
         <div>
-          <NavBarIcon href="/pets" tooltip={$t('global.navbar.icons.pets')}>
+          <NavBarIcon href="/{$locale}/pets" tooltip={$t('global.navbar.icons.pets')}>
             <Icon class="h-6 w-6" icon="ph:paw-print-fill" />
           </NavBarIcon>
-          <NavBarIcon href="/routines" tooltip={$t('global.navbar.icons.routines')}>
+          <NavBarIcon href="/{$locale}/routines" tooltip={$t('global.navbar.icons.routines')}>
             <Icon class="h-6 w-6" icon="ph:repeat-fill" />
           </NavBarIcon>
-          <NavBarIcon href="/medications" tooltip={$t('global.navbar.icons.medications')}>
+          <NavBarIcon href="/{$locale}/medications" tooltip={$t('global.navbar.icons.medications')}>
             <Icon class="h-6 w-6" icon="ph:pill-fill" />
           </NavBarIcon>
         </div>
@@ -46,9 +46,9 @@
                 <ul>
                   {#each $locales as locale}
                     <li>
-                      <button on:click={() => setLocale(locale)}>
-                        {lang[locale] ?? locale}
-                      </button>
+                      <a href="/{locale}{route}">
+                        {locale}
+                      </a>
                     </li>
                   {/each}
                 </ul>
