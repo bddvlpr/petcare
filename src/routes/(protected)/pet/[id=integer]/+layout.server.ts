@@ -1,4 +1,4 @@
-import { getPet } from '$lib/services/pets';
+import { getPet } from '$lib/server/services/pets';
 import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 

@@ -2,7 +2,7 @@ import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod';
 import { redirect } from '@sveltejs/kit';
-import { addPet } from '$lib/services/pets';
+import { addPet } from '$lib/server/services/pets';
 import { PetType } from '@prisma/client';
 
 const schema = z.object({

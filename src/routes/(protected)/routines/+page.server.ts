@@ -1,4 +1,4 @@
-import { getDueRoutines } from '$lib/services/routines';
+import { getDueRoutines } from '$lib/server/services/routines';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

@@ -1,4 +1,4 @@
-import { getMedicationCount, getMedications } from '$lib/services/medications';
+import { getMedicationCount, getMedications } from '$lib/server/services/medications';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

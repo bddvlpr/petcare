@@ -1,4 +1,4 @@
-import { getRoutinesByPet } from '$lib/services/routines';
+import { getRoutinesByPet } from '$lib/server/services/routines';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

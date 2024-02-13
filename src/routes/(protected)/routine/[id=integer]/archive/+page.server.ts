@@ -1,4 +1,4 @@
-import { deleteRoutine } from '$lib/services/routines';
+import { deleteRoutine } from '$lib/server/services/routines';
 import { redirect, type Actions } from '@sveltejs/kit';
 
 export const actions = {

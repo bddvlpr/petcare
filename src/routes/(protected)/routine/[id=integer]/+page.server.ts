@@ -1,4 +1,4 @@
-import { getLastRoutineLog } from '$lib/services/routinelogs';
+import { getLastRoutineLog } from '$lib/server/services/routinelogs';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

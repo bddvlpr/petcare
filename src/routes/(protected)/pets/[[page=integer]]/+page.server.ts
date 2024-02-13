@@ -1,4 +1,4 @@
-import { getPetCount, getPets } from '$lib/services/pets';
+import { getPetCount, getPets } from '$lib/server/services/pets';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

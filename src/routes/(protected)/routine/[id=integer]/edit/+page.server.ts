@@ -2,7 +2,7 @@ import { message, superValidate } from 'sveltekit-superforms/server';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
 import { toReadableHour } from '$lib/date';
-import { updateRoutine } from '$lib/services/routines';
+import { updateRoutine } from '$lib/server/services/routines';
 
 const schema = z.object({
   amount: z.string().min(1),

@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
-import { getRoutine } from '$lib/services/routines';
+import { getRoutine } from '$lib/server/services/routines';
 
 export const load: LayoutServerLoad = async ({ params }) => {
   const id = Number(params.id);

@@ -1,7 +1,7 @@
 import { message, superValidate } from 'sveltekit-superforms/server';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
-import { getPet, updatePet } from '$lib/services/pets';
+import { getPet, updatePet } from '$lib/server/services/pets';
 import { PetType } from '@prisma/client';
 
 const schema = z.object({

@@ -2,7 +2,7 @@ import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod';
 import { redirect } from '@sveltejs/kit';
-import { addMedication } from '$lib/services/medications';
+import { addMedication } from '$lib/server/services/medications';
 
 const schema = z.object({
   name: z.string().min(1),

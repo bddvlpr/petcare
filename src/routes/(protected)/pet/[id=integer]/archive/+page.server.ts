@@ -1,4 +1,4 @@
-import { deletePet } from '$lib/services/pets';
+import { deletePet } from '$lib/server/services/pets';
 import { redirect, type Actions } from '@sveltejs/kit';
 
 export const actions = {

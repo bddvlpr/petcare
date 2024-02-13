@@ -1,4 +1,4 @@
-import prisma from '$lib/prisma';
+import prisma from '$lib/server/prisma';
 
 export const getRoutineLogs = (routineId: number) =>
   prisma.routineLog.findMany({ where: { routineId } });

@@ -1,4 +1,4 @@
-import { getMedication } from '$lib/services/medications';
+import { getMedication } from '$lib/server/services/medications';
 import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 

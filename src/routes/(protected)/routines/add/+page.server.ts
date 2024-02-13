@@ -1,9 +1,9 @@
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod';
-import { getAllPets } from '$lib/services/pets';
-import { getAllMedications } from '$lib/services/medications';
-import { addRoutine } from '$lib/services/routines';
+import { getAllPets } from '$lib/server/services/pets';
+import { getAllMedications } from '$lib/server/services/medications';
+import { addRoutine } from '$lib/server/services/routines';
 import { redirect } from '@sveltejs/kit';
 
 const schema = z.object({

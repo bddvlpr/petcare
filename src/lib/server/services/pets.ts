@@ -1,4 +1,4 @@
-import prisma from '$lib/prisma';
+import prisma from '$lib/server/prisma';
 import type { Prisma } from '@prisma/client';
 
 export const getPets = (skip: number, take = 10) =>

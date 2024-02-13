@@ -1,7 +1,7 @@
 import { message, superValidate } from 'sveltekit-superforms/server';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
-import { getMedication, updateMedication } from '$lib/services/medications';
+import { getMedication, updateMedication } from '$lib/server/services/medications';
 
 const schema = z.object({
   name: z.string().min(1),
