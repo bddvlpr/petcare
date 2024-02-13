@@ -2,7 +2,7 @@ name: Docker CD
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 jobs:
   docker-build-and-push:
     name: Build Docker image and push
