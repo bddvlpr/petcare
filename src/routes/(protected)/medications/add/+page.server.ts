@@ -22,8 +22,8 @@ export const actions = {
 
     if (!form.valid) return message(form, { type: 'error', text: 'Form is not valid!' });
 
-    await addMedication(form.data);
+    const medication = await addMedication(form.data);
 
-    return redirect(302, '/medications');
+    return redirect(302, `/medication/${medication.id}`);
   }
 } satisfies Actions;

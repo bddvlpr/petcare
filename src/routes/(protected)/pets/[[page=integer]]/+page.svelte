@@ -3,11 +3,14 @@
   import PetCard from '$lib/components/content/PetCard.svelte';
   import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
+  import Tooltip from '$lib/components/content/Tooltip.svelte';
 
   export let data: PageData;
 
   $: pages = Math.ceil(data.count / 10);
 </script>
+
+<h1 class="mb-4 text-center text-xl font-semibold text-primary">Pets</h1>
 
 <div class="m-2 flex flex-wrap justify-center gap-4">
   {#each data.pets as pet}
@@ -30,7 +33,9 @@
 </div>
 
 <div class="fixed bottom-10 right-8">
-  <a class="btn btn-circle btn-primary" href="/pets/add">
-    <Icon class="h-6 w-6" icon="ph:plus" />
-  </a>
+  <Tooltip text="Add">
+    <a class="btn btn-circle btn-primary" href="/pets/add">
+      <Icon class="h-6 w-6" icon="ph:plus" />
+    </a>
+  </Tooltip>
 </div>

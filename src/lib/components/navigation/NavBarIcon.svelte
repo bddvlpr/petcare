@@ -1,18 +1,18 @@
 <script lang="ts">
+  import Tooltip from '../content/Tooltip.svelte';
+
   export let tooltip: string;
   export let href: string | undefined = undefined;
 </script>
 
-{#if href}
-  <div class="tooltip tooltip-bottom" data-tip={tooltip}>
+<Tooltip text={tooltip} position="tooltip-bottom">
+  {#if href}
     <a class="btn btn-circle btn-ghost" {href}>
       <slot />
     </a>
-  </div>
-{:else}
-  <div class="tooltip tooltip-bottom" data-tip={tooltip}>
+  {:else}
     <button class="btn btn-circle btn-ghost" on:click>
       <slot />
     </button>
-  </div>
-{/if}
+  {/if}
+</Tooltip>

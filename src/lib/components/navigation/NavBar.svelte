@@ -37,14 +37,17 @@
           <ul class="menu dropdown-content z-50 w-48 rounded-box bg-base-100 p-2 shadow">
             <li>
               <button on:click={() => signOut()}>
-                <Icon class="h-4 w-4" icon="ph:door-fill" />
+                <Icon class="h-4 w-4" icon="ph:sign-out" />
                 Log out
               </button>
             </li>
           </ul>
         </div>
       {:else}
-        <button class="btn btn-ghost" on:click={() => signIn('auth0')}>Log in</button>
+        <button class="btn btn-ghost" on:click={() => signIn('auth0')}>
+          <Icon class="h-4 w-4" icon="ph:sign-in" />
+          Log in
+        </button>
       {/if}
     </div>
   </div>

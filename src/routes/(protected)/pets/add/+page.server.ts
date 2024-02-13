@@ -25,8 +25,8 @@ export const actions = {
 
     if (!form.valid) return message(form, { type: 'error', text: 'Form is not valid!' });
 
-    await addPet(form.data);
+    const pet = await addPet(form.data);
 
-    return redirect(302, '/pets');
+    return redirect(302, `/pet/${pet.id}`);
   }
 } satisfies Actions;

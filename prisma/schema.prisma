@@ -52,16 +52,16 @@ model Medication {
 model Routine {
   id Int @id @default(autoincrement())
 
-  pet   Pet @relation(fields: [petId], references: [id])
+  pet   Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
   petId Int
 
   medication   Medication @relation(fields: [medicationId], references: [id], onDelete: Cascade)
   medicationId Int
 
-  amount   String
-  interval Int
-  time     Int
-  logs     RoutineLog[]
+  amount       String
+  intervalDays Int
+  intervalTime Int
+  logs         RoutineLog[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -70,7 +70,7 @@ model Routine {
 model RoutineLog {
   id Int @id @default(autoincrement())
 
-  routine   Routine @relation(fields: [routineId], references: [id])
+  routine   Routine @relation(fields: [routineId], references: [id], onDelete: Cascade)
   routineId Int
 
   taken     Boolean

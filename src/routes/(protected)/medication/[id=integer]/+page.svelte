@@ -2,6 +2,8 @@
   import Avatar from '$lib/components/content/Avatar.svelte';
   import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
+  import Tooltip from '$lib/components/content/Tooltip.svelte';
+  import RoutineCard from '$lib/components/content/RoutineCard.svelte';
 
   export let data: PageData;
 </script>
@@ -18,40 +20,44 @@
     <Avatar alt={data.medication.name} src={data.medication.picture} size="w-24" type="rounded" />
   </div>
   <div class="divider"></div>
-  <h2 class="my-2 text-2xl font-semibold">Notes</h2>
+
+  <div class="my-2 flex items-center">
+    <h2 class="text-2xl font-semibold">Notes</h2>
+    <a class="btn btn-circle btn-primary ml-auto" href="/medication/{data.medication.id}/edit">
+      <Icon icon="ph:note-pencil" />
+    </a>
+  </div>
   <p>
     {data.medication.notes ?? 'None'}
   </p>
-  <h2 class="my-2 text-2xl font-semibold">Routines</h2>
-  <div class="overflow-x-auto">
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Pet</th>
-          <th>Amount</th>
-          <th>Interval</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each data.routines as routine, i}
-          <tr>
-            <th>{i + 1}</th>
-            <td>{routine.pet.name}</td>
-            <td>{routine.amount}</td>
-            <td>{routine.interval}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
+
+  <div class="my-2 flex items-center">
+    <h2 class="text-2xl font-semibold">Routines</h2>
+    <a class="btn btn-circle btn-primary ml-auto" href="/routines/add">
+      <Icon icon="ph:plus" />
+    </a>
+  </div>
+  <div class="flex gap-2 overflow-x-scroll">
+    {#if data.routines.length}
+      {#each data.routines as routine}
+        <RoutineCard routine={{ ...routine, medication: data.medication }} />
+      {/each}
+    {:else}
+      None
+    {/if}
   </div>
 </div>
 
 <div class="fixed bottom-10 right-8">
-  <a class="btn btn-circle" href="/medication/{data.medication.id}/edit">
-    <Icon class="h-6 w-6" icon="ph:note-pencil" />
-  </a>
-  <a class="btn btn-circle btn-error" href="/medication/{data.medication.id}/archive">
-    <Icon class="h-6 w-6" icon="ph:archive" />
-  </a>
+  <Tooltip text="Edit">
+    <a class="btn btn-circle" href="/medication/{data.medication.id}/edit">
+      <Icon class="h-6 w-6" icon="ph:note-pencil" />
+    </a>
+  </Tooltip>
+
+  <Tooltip text="Add">
+    <a class="btn btn-circle btn-error" href="/medication/{data.medication.id}/archive">
+      <Icon class="h-6 w-6" icon="ph:archive" />
+    </a>
+  </Tooltip>
 </div>

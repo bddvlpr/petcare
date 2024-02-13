@@ -7,7 +7,12 @@ export const handle = SvelteKitAuth({
     Auth0({
       clientId: AUTH0_CLIENT_ID,
       clientSecret: AUTH0_CLIENT_SECRET,
-      issuer: AUTH0_ISSUER
+      issuer: AUTH0_ISSUER,
+      authorization: {
+        params: {
+          prompt: 'login'
+        }
+      }
     })
   ]
 });

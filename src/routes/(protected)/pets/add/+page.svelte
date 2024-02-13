@@ -4,7 +4,6 @@
   import Icon from '@iconify/svelte';
   import { PetType } from '@prisma/client';
   import Input from '$lib/components/form/Input.svelte';
-  import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
   import Toast from '$lib/components/form/Toast.svelte';
 
   export let data: PageData;
@@ -12,8 +11,6 @@
   const { form, errors, enhance, message } = superForm(data.form);
   const proxyBirthday = dateProxy(form, 'birthday', { format: 'date' });
 </script>
-
-<SuperDebug data={form} />
 
 <form class="mx-auto max-w-sm md:max-w-lg" method="POST" use:enhance>
   <Input

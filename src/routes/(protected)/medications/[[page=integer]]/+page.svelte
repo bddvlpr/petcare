@@ -9,6 +9,8 @@
   $: pages = Math.ceil(data.count / 10);
 </script>
 
+<h1 class="mb-4 text-center text-xl font-semibold text-primary">Medications</h1>
+
 <div class="m-2 flex flex-wrap justify-center gap-4">
   <div class="w-full overflow-x-auto">
     <table class="table">
