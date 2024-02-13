@@ -18,5 +18,6 @@ COPY --from=build-env /app/package.json .
 COPY --from=build-env /app/build .
 
 EXPOSE 3000
+LABEL org.opencontainers.image.source=https://github.com/bddvlpr/petcare
 
 CMD ["node", "index.js"]
