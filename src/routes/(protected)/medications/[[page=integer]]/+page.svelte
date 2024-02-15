@@ -28,7 +28,7 @@
             <th>{medication.id}</th>
             <td>
               <div class="flex items-center gap-3">
-                <Avatar alt={medication.name} src={medication.picture} size="w-12" />
+                <Avatar alt={medication.name} src={medication.picture} size="w-12" type="rounded" />
               </div>
             </td>
             <td>{medication.name}</td>

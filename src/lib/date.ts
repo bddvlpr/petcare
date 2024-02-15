@@ -4,7 +4,14 @@ import moment from 'moment';
 export const toLocaleDateString = (date: Date | undefined | null) =>
   date?.toLocaleDateString() ?? '?';
 
-export const toLocaleString = (date: Date | undefined | null) => date?.toLocaleString() ?? '?';
+export const toLocaleString = (date: Date | undefined | null) =>
+  date?.toLocaleString(undefined, {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }) ?? '?';
 
 export const toReadableHour = (input: number | undefined | null) =>
   input

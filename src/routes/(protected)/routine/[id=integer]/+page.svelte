@@ -51,7 +51,7 @@
 
   <div class="my-2 flex items-center">
     <h2 class="text-2xl font-semibold">Logs</h2>
-    <a class="btn btn-circle btn-primary ml-auto" href="/routine/{data.routine.id}/log">
+    <a class="btn btn-circle btn-primary ml-auto" href="/routine/{data.routine.id}/add-log">
       <Icon icon="ph:plus" />
     </a>
   </div>
@@ -78,8 +78,11 @@
               {/if}
             </td>
             <td>
-              <a class="btn btn-circle btn-ghost" href="/routine/{data.routine.id}/log/">
-                <Icon class="h-6 w-6" icon="ph:eye" />
+              <a
+                class="btn btn-circle btn-ghost"
+                href="/routine/{data.routine.id}/del-log/{log.id}"
+              >
+                <Icon class="h-6 w-6" icon="ph:trash" />
               </a>
             </td>
           </tr>

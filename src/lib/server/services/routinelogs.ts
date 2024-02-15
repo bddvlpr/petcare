@@ -9,3 +9,5 @@ export const getLastRoutineLog = (routineId: number) =>
 export const addRoutineLog = (
   data: Prisma.RoutineLogCreateInput | Prisma.RoutineLogUncheckedCreateInput
 ) => prisma.routineLog.create({ data });
+
+export const deleteRoutineLog = (id: number) => prisma.routineLog.delete({ where: { id } });
