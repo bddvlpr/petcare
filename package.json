@@ -1,6 +1,7 @@
 {
-  "name": "petcare",
-  "version": "0.0.2",
+  "name": "@bddvlpr/petcare",
+  "version": "0.0.3",
+  "author": "Luna Simons <luna@bddvlpr.com> (https://bddvlpr.com)",
   "private": true,
   "scripts": {
     "dev": "vite dev",
