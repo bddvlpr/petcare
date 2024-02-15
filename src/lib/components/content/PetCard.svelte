@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Pet, Routine } from '@prisma/client';
   import Avatar from './Avatar.svelte';
-  import { toLocalDateString } from '$lib/date';
+  import { toLocaleDateString } from '$lib/date';
   import Icon from '@iconify/svelte';
 
   export let pet: Pet & { routines?: Routine[] };
@@ -32,7 +32,7 @@
         <Icon class="h-6 w-6" icon="ph:cake-fill" />
         <div class="self-center">
           <span class="mr-2 font-semibold"> Birthday </span>
-          {toLocalDateString(pet.birthday)}
+          {toLocaleDateString(pet.birthday)}
         </div>
       </div>
       {#if pet.routines}

@@ -10,7 +10,15 @@ export const getAllRoutines = () =>
 export const getRoutine = (id: number) =>
   prisma.routine.findUnique({
     where: { id },
-    include: { pet: true, medication: true, logs: true }
+    include: {
+      pet: true,
+      medication: true,
+      logs: {
+        orderBy: {
+          timestamp: 'desc'
+        }
+      }
+    }
   });
 
 export const getRoutinesByMedication = (medicationId: number) =>

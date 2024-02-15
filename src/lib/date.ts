@@ -1,7 +1,10 @@
+import type { Routine, RoutineLog } from '@prisma/client';
 import moment from 'moment';
 
-export const toLocalDateString = (date: Date | undefined | null) =>
+export const toLocaleDateString = (date: Date | undefined | null) =>
   date?.toLocaleDateString() ?? '?';
+
+export const toLocaleString = (date: Date | undefined | null) => date?.toLocaleString() ?? '?';
 
 export const toReadableHour = (input: number | undefined | null) =>
   input
@@ -11,3 +14,11 @@ export const toReadableHour = (input: number | undefined | null) =>
     : '?';
 
 export const toRelativeTime = (date: Date | undefined | null) => moment(date).fromNow();
+
+export const isDue = (routineLog: RoutineLog | undefined | null, routine: Routine) =>
+  !routineLog?.timestamp ||
+  moment(routineLog.timestamp)
+    .add(routine.intervalDays, 'days')
+    .hours(0)
+    .minutes(routine.intervalTime)
+    .isBefore(moment());

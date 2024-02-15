@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toLocalDateString, toReadableHour } from '$lib/date';
+  import { toLocaleDateString, toReadableHour } from '$lib/date';
   import Icon from '@iconify/svelte';
   import type { Medication, Pet, Routine, RoutineLog } from '@prisma/client';
 
@@ -30,7 +30,7 @@
       </div>
       <div class="flex gap-2">
         <Icon class="h-6 w-6" icon="ph:clock-fill" />
-        {toLocalDateString(routine.createdAt)}
+        {toLocaleDateString(routine.createdAt)}
       </div>
     </div>
     <div class="card-actions mt-2">

@@ -2,7 +2,8 @@
   export let label: string;
   export let name: string;
   export let placeholder: string;
-  export let type: 'text' | 'textarea' | 'select' | 'date' | 'time' | 'number' = 'text';
+  export let type: 'text' | 'textarea' | 'select' | 'date' | 'time' | 'datetime-local' | 'number' =
+    'text';
   export let value: unknown;
   export let error: unknown;
 </script>
@@ -19,6 +20,8 @@
     </select>
   {:else if type === 'date'}
     <input class="input input-bordered" type="date" {name} {placeholder} bind:value />
+  {:else if type === 'datetime-local'}
+    <input class="input input-bordered" type="datetime-local" {name} {placeholder} bind:value />
   {:else if type === 'number'}
     <input class="input input-bordered" type="number" {name} {placeholder} bind:value />
   {:else if type === 'time'}
