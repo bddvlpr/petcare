@@ -2,6 +2,7 @@
   "name": "@bddvlpr/petcare",
   "version": "0.0.3",
   "author": "Luna Simons <luna@bddvlpr.com> (https://bddvlpr.com)",
+  "license": "BSD-3-Clause",
   "private": true,
   "scripts": {
     "dev": "vite dev",
