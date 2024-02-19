@@ -7,7 +7,11 @@
     pnpm2nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "aarch64-linux"
@@ -15,6 +19,7 @@
         "x86_64-linux"
         "x86_64-darwin"
       ];
+
       perSystem = {
         pkgs,
         system,
@@ -33,6 +38,13 @@
           buildInputs = with pkgs; [
             nodePackages.pnpm
           ];
+        };
+      };
+
+      flake = {
+        nixosModules = rec {
+          petcare = import ./module.nix self;
+          default = petcare;
         };
       };
     };
