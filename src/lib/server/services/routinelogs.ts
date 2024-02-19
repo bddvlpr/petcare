@@ -1,13 +1,16 @@
-import prisma from '$lib/server/prisma';
-import type { Prisma } from '@prisma/client';
+import { eq } from 'drizzle-orm';
+import database from '../database';
+import { routineLog, type NewRoutineLog } from '../database/schema';
 
 export const getRoutineLogs = (routineId: number) =>
-  prisma.routineLog.findMany({ where: { routineId } });
+  database.query.routineLog.findMany({ where: eq(routineLog.routineId, routineId) });
 export const getLastRoutineLog = (routineId: number) =>
-  prisma.routineLog.findFirst({ where: { routineId }, orderBy: { timestamp: 'desc' } });
+  database.query.routineLog.findFirst({
+    where: eq(routineLog.routineId, routineId),
+    orderBy: (routineLog, { desc }) => [desc(routineLog.timestamp)]
+  });
 
-export const addRoutineLog = (
-  data: Prisma.RoutineLogCreateInput | Prisma.RoutineLogUncheckedCreateInput
-) => prisma.routineLog.create({ data });
+export const addRoutineLog = (data: NewRoutineLog) => database.insert(routineLog).values(data);
 
-export const deleteRoutineLog = (id: number) => prisma.routineLog.delete({ where: { id } });
+export const deleteRoutineLog = (id: number) =>
+  database.delete(routineLog).where(eq(routineLog.id, id));

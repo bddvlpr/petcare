@@ -2,11 +2,9 @@ import { message, superValidate } from 'sveltekit-superforms/server';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
 import { getPet, updatePet } from '$lib/server/services/pets';
-import { PetType } from '@prisma/client';
 
 const schema = z.object({
   name: z.string().min(1),
-  type: z.nativeEnum(PetType),
   birthday: z.date().max(new Date(), 'Must be before today').optional().nullable(),
   picture: z.string().url().optional().nullable(),
   notes: z.string().optional().nullable()

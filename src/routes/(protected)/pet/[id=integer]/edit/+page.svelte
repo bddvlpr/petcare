@@ -3,7 +3,6 @@
   import type { PageData } from './$types';
   import { dateProxy, superForm } from 'sveltekit-superforms/client';
   import Input from '$lib/components/form/Input.svelte';
-  import { PetType } from '@prisma/client';
   import Toast from '$lib/components/form/Toast.svelte';
 
   export let data: PageData;
@@ -20,19 +19,6 @@
     bind:value={$form.name}
     bind:error={$errors.name}
   />
-
-  <Input
-    name="type"
-    label="Type"
-    placeholder="..."
-    type="select"
-    bind:value={$form.type}
-    bind:error={$errors.type}
-  >
-    {#each Object.keys(PetType) as type}
-      <option>{type}</option>
-    {/each}
-  </Input>
 
   <Input
     name="birthday"

@@ -19,10 +19,10 @@ export const load: PageServerLoad = async () => {
 export const actions = {
   default: async ({ request }) => {
     const form = await superValidate(request, schema);
-
     if (!form.valid) return message(form, { type: 'error', text: 'Form is not valid!' });
 
-    const medication = await addMedication(form.data);
+    const [medication = null] = await addMedication(form.data);
+    if (!medication) return message(form, { type: 'error', text: 'Could not add this object!' });
 
     return redirect(302, `/medication/${medication.id}`);
   }

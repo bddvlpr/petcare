@@ -1,5 +1,5 @@
-import type { Routine, RoutineLog } from '@prisma/client';
 import moment from 'moment';
+import type { Routine, RoutineLog } from './server/database/schema';
 
 export const toLocaleDateString = (date: Date | undefined | null) =>
   date?.toLocaleDateString() ?? '?';

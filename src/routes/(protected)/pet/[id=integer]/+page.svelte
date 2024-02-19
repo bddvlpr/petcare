@@ -14,9 +14,6 @@
       <h1 class="text-4xl font-bold text-primary">
         {data.pet.name}
       </h1>
-      <div class="badge badge-neutral mt-2">
-        {data.pet.type}
-      </div>
     </div>
     <Avatar alt={data.pet.name} src={data.pet.picture} size="w-24" type="rounded" />
   </div>

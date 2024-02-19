@@ -1,38 +1,40 @@
-import prisma from '$lib/server/prisma';
-import type { Prisma } from '@prisma/client';
-import { getLastRoutineLog } from './routinelogs';
+import { count, eq } from 'drizzle-orm';
+import database from '../database';
+import { routine, type NewRoutine, type Routine } from '../database/schema';
 import moment from 'moment';
+import { getLastRoutineLog } from './routinelogs';
 
-export const getRoutines = (skip: number, take = 10) => prisma.routine.findMany({ skip, take });
-export const getRoutineCount = () => prisma.routine.count();
 export const getAllRoutines = () =>
-  prisma.routine.findMany({ include: { pet: true, medication: true } });
+  database.query.routine.findMany({ with: { pet: true, medication: true } });
+export const getRoutines = (offset: number, limit = 10) =>
+  database.query.routine.findMany({ offset, limit });
+export const getRoutineCount = () => database.select({ count: count() }).from(routine);
 export const getRoutine = (id: number) =>
-  prisma.routine.findUnique({
-    where: { id },
-    include: {
+  database.query.routine.findFirst({
+    where: eq(routine.id, id),
+    with: {
+      logs: { orderBy: (routine, { desc }) => [desc(routine.timestamp)] },
       pet: true,
-      medication: true,
-      logs: {
-        orderBy: {
-          timestamp: 'desc'
-        }
-      }
+      medication: true
     }
   });
-
 export const getRoutinesByMedication = (medicationId: number) =>
-  prisma.routine.findMany({ where: { medicationId }, include: { pet: true } });
+  database.query.routine.findMany({
+    where: eq(routine.medicationId, medicationId),
+    with: { pet: true }
+  });
 export const getRoutinesByPet = (petId: number) =>
-  prisma.routine.findMany({ where: { petId }, include: { medication: true } });
+  database.query.routine.findMany({
+    where: eq(routine.petId, petId),
+    with: { medication: true }
+  });
 
-export const addRoutine = (data: Prisma.RoutineCreateInput | Prisma.RoutineUncheckedCreateInput) =>
-  prisma.routine.create({ data });
+export const addRoutine = (data: NewRoutine) => database.insert(routine).values(data).returning();
 
-export const updateRoutine = (id: number, data: Prisma.RoutineUpdateInput) =>
-  prisma.routine.update({ where: { id }, data });
+export const updateRoutine = (id: number, data: Partial<Routine>) =>
+  database.update(routine).set(data).where(eq(routine.id, id));
 
-export const deleteRoutine = (id: number) => prisma.routine.delete({ where: { id } });
+export const deleteRoutine = (id: number) => database.delete(routine).where(eq(routine.id, id));
 
 export const getDueRoutines = async () => {
   const routines = await getAllRoutines();

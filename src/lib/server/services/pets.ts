@@ -1,15 +1,16 @@
-import prisma from '$lib/server/prisma';
-import type { Prisma } from '@prisma/client';
+import { count, eq } from 'drizzle-orm';
+import database from '../database';
+import { pet, type NewPet, type Pet } from '../database/schema';
 
-export const getPets = (skip: number, take = 10) =>
-  prisma.pet.findMany({ skip, take, include: { routines: true } });
-export const getPetCount = () => prisma.pet.count();
-export const getPet = (id: number) => prisma.pet.findUnique({ where: { id } });
-export const getAllPets = () => prisma.pet.findMany();
+export const getAllPets = () => database.query.pet.findMany();
+export const getPets = (offset: number, limit = 10) =>
+  database.query.pet.findMany({ offset, limit });
+export const getPetCount = () => database.select({ count: count() }).from(pet);
+export const getPet = (id: number) => database.query.pet.findFirst({ where: eq(pet.id, id) });
 
-export const addPet = (data: Prisma.PetCreateInput) => prisma.pet.create({ data });
+export const addPet = (data: NewPet) => database.insert(pet).values(data).returning();
 
-export const updatePet = (id: number, data: Prisma.PetUpdateInput) =>
-  prisma.pet.update({ where: { id }, data });
+export const updatePet = (id: number, data: Partial<Pet>) =>
+  database.update(pet).set(data).where(eq(pet.id, id));
 
-export const deletePet = (id: number) => prisma.pet.delete({ where: { id } });
+export const deletePet = (id: number) => database.delete(pet).where(eq(pet.id, id));
