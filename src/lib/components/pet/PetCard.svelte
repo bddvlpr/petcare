@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Avatar from './Avatar.svelte';
   import { toLocaleDateString } from '$lib/date';
   import Icon from '@iconify/svelte';
   import type { Pet, Routine } from '$lib/server/database/schema';
+  import Avatar from '../content/Avatar.svelte';
 
   export let pet: Pet & { routines?: Routine[] };
 </script>

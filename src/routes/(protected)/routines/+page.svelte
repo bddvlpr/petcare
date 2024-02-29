@@ -1,8 +1,8 @@
 <script lang="ts">
-  import RoutineCard from '$lib/components/content/RoutineCard.svelte';
-  import Tooltip from '$lib/components/content/Tooltip.svelte';
-  import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
+  import RoutineCard from '$lib/components/routine/RoutineCard.svelte';
+  import Floating from '$lib/components/content/Floating.svelte';
+  import FloatingButton from '$lib/components/content/FloatingButton.svelte';
 
   export let data: PageData;
 </script>
@@ -31,10 +31,6 @@
   {/if}
 </div>
 
-<div class="fixed bottom-10 right-8">
-  <Tooltip text="Add">
-    <a class="btn btn-circle btn-primary" href="/routines/add">
-      <Icon class="h-6 w-6" icon="ph:plus" />
-    </a>
-  </Tooltip>
-</div>
+<Floating>
+  <FloatingButton text="Add" icon="ph:plus" type="btn-primary" href="/routines/add" />
+</Floating>

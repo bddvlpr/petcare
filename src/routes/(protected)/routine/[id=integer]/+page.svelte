@@ -1,9 +1,10 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
-  import Tooltip from '$lib/components/content/Tooltip.svelte';
   import Avatar from '$lib/components/content/Avatar.svelte';
   import { toLocaleString, toReadableHour } from '$lib/date';
+  import FloatingButton from '$lib/components/content/FloatingButton.svelte';
+  import Floating from '$lib/components/content/Floating.svelte';
 
   export let data: PageData;
 </script>
@@ -92,16 +93,12 @@
   </div>
 </div>
 
-<div class="fixed bottom-10 right-8">
-  <Tooltip text="Edit">
-    <a class="btn btn-circle" href="/routine/{data.routine.id}/edit">
-      <Icon class="h-6 w-6" icon="ph:note-pencil" />
-    </a>
-  </Tooltip>
-
-  <Tooltip text="Add">
-    <a class="btn btn-circle btn-error" href="/routine/{data.routine.id}/archive">
-      <Icon class="h-6 w-6" icon="ph:archive" />
-    </a>
-  </Tooltip>
-</div>
+<Floating>
+  <FloatingButton text="Edit" icon="ph:note-pencil" href="/routine/{data.routine.id}/edit" />
+  <FloatingButton
+    text="Archive"
+    icon="ph:archive"
+    type="btn-error"
+    href="/routine/{data.routine.id}/archive"
+  />
+</Floating>

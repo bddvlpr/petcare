@@ -2,8 +2,9 @@
   import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
   import Avatar from '$lib/components/content/Avatar.svelte';
-  import Tooltip from '$lib/components/content/Tooltip.svelte';
-  import RoutineCard from '$lib/components/content/RoutineCard.svelte';
+  import Floating from '$lib/components/content/Floating.svelte';
+  import FloatingButton from '$lib/components/content/FloatingButton.svelte';
+  import RoutineCard from '$lib/components/routine/RoutineCard.svelte';
 
   export let data: PageData;
 </script>
@@ -46,15 +47,12 @@
   </div>
 </div>
 
-<div class="fixed bottom-10 right-8">
-  <Tooltip text="Edit">
-    <a class="btn btn-circle" href="/pet/{data.pet.id}/edit">
-      <Icon class="h-6 w-6" icon="ph:note-pencil" />
-    </a>
-  </Tooltip>
-  <Tooltip text="Archive">
-    <a class="btn btn-circle btn-error" href="/pet/{data.pet.id}/archive">
-      <Icon class="h-6 w-6" icon="ph:archive" />
-    </a>
-  </Tooltip>
-</div>
+<Floating>
+  <FloatingButton text="Edit" icon="ph:note-pencil" href="/pet/{data.pet.id}/edit" />
+  <FloatingButton
+    text="Archive"
+    icon="ph:archive"
+    type="btn-error"
+    href="/pet/{data.pet.id}/archive"
+  />
+</Floating>

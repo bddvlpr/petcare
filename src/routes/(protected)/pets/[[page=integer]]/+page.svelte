@@ -1,9 +1,9 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import PetCard from '$lib/components/content/PetCard.svelte';
-  import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
-  import Tooltip from '$lib/components/content/Tooltip.svelte';
+  import Floating from '$lib/components/content/Floating.svelte';
+  import FloatingButton from '$lib/components/content/FloatingButton.svelte';
+  import PetCard from '$lib/components/pet/PetCard.svelte';
 
   export let data: PageData;
 
@@ -32,10 +32,6 @@
   </div>
 </div>
 
-<div class="fixed bottom-10 right-8">
-  <Tooltip text="Add">
-    <a class="btn btn-circle btn-primary" href="/pets/add">
-      <Icon class="h-6 w-6" icon="ph:plus" />
-    </a>
-  </Tooltip>
-</div>
+<Floating>
+  <FloatingButton text="Add" icon="ph:plus" type="btn-primary" href="/pets/add" />
+</Floating>

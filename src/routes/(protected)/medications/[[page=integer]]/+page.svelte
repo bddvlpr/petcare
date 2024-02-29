@@ -3,6 +3,8 @@
   import Icon from '@iconify/svelte';
   import type { PageData } from './$types';
   import Avatar from '$lib/components/content/Avatar.svelte';
+  import Floating from '$lib/components/content/Floating.svelte';
+  import FloatingButton from '$lib/components/content/FloatingButton.svelte';
 
   export let data: PageData;
 
@@ -58,8 +60,6 @@
   </div>
 </div>
 
-<div class="fixed bottom-10 right-8">
-  <a class="btn btn-circle btn-primary" href="/medications/add">
-    <Icon class="h-6 w-6" icon="ph:plus" />
-  </a>
-</div>
+<Floating>
+  <FloatingButton text="Add" icon="ph:plus" type="btn-primary" href="/medications/add" />
+</Floating>
