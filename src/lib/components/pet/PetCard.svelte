@@ -1,10 +1,11 @@
 <script lang="ts">
   import { toLocaleDateString } from '$lib/date';
   import Icon from '@iconify/svelte';
-  import type { Pet, Routine } from '$lib/server/database/schema';
+  import type { Pet } from '$lib/server/database/schema';
   import Avatar from '../content/Avatar.svelte';
+  import { t } from '$lib/i18n';
 
-  export let pet: Pet & { routines?: Routine[] };
+  export let pet: Pet;
 </script>
 
 <div class="card w-96 bg-base-200 shadow-xl">
@@ -24,19 +25,10 @@
       <div class="flex gap-2">
         <Icon class="h-6 w-6" icon="ph:cake-fill" />
         <div class="self-center">
-          <span class="mr-2 font-semibold"> Birthday </span>
+          <span class="mr-2 font-semibold"> {$t('common.terms.birthday')} </span>
           {toLocaleDateString(pet.birthday)}
         </div>
       </div>
-      {#if pet.routines}
-        <div class="flex gap-2">
-          <Icon class="h-6 w-6" icon="ph:pill-fill" />
-          <div class="self-center">
-            <span class="mr-2 font-semibold"> Routine(s) </span>
-            {pet.routines.length}
-          </div>
-        </div>
-      {/if}
     </div>
   </div>
 </div>

@@ -1,0 +1,13 @@
+{
+  "title": "Petcare",
+  "icons": {
+    "pets": "Dieren",
+    "routines": "Routines",
+    "medications": "Medicatie"
+  },
+  "actions": {
+    "language": "Taal",
+    "login": "Inloggen",
+    "logout": "Uitloggen"
+  }
+}

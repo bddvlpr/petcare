@@ -5,6 +5,7 @@
   import RoutineCard from '$lib/components/routine/RoutineCard.svelte';
   import Floating from '$lib/components/content/Floating.svelte';
   import FloatingButton from '$lib/components/content/FloatingButton.svelte';
+  import { t } from '$lib/i18n';
 
   export let data: PageData;
 </script>
@@ -15,7 +16,7 @@
       <h1 class="text-2xl font-bold text-primary">
         {data.medication.name}
       </h1>
-      {data.routines.length} routine(s)
+      {$t('pages.medication.routines', { count: data.routines.length })}
     </div>
 
     <Avatar alt={data.medication.name} src={data.medication.picture} size="w-24" type="rounded" />

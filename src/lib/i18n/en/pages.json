@@ -1,0 +1,11 @@
+{
+  "pets": {
+    "title": "Pets"
+  },
+  "medications": {
+    "title": "Medications"
+  },
+  "medication": {
+    "routines": " {{count:gt; 0:{{count:number;}} {{count; 1:routine; default:routines}}; default:No routines}}"
+  }
+}
